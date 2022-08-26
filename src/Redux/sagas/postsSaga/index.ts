@@ -1,21 +1,57 @@
-import React from "react";// / import { all, call, put, takeLatest,} from "redux-saga/effects"
-// import { getAllPostsApi } from "../../api"
-// import { getPosts, setLoadingPost,setPosts } from "../../reducers/Post"
 
-// function* getPostsSaga (action:any) {
-//  yield put(setLoadingPost(true))
+import { all, takeLatest, put, call } from "redux-saga/effects";
+import { getPostsAPI, getPostAPI, getPostsCountAPI } from "../../api";
+import { getPosts,
+            setPosts, 
+            setLoadingPosts, 
+            setSelectedPost, 
+            setSelectedPostLoading, 
+            setTotalAllPostsCounter,
+            setTotalAllPostsCounterLoading } from '../../reducers/Post/posts.reducer';
 
-// const {data,status,problem} = yield call (getAllPostsApi, action.payload)
+function* getPostsSaga(action: any) {
+    yield put(setLoadingPosts(true));
+    const { data, status, problem } = yield call(getPostsAPI, action.payload);
 
-// if(status===200&&data){
-//     yield put(setPosts(data.results))
-// } else {    console.log('problem',problem)
-// }
+    if(status === 200 && data) {
+        yield put(setPosts(data))
+    } else {
+        console.log('Error:', problem)
+    } 
+    
+    yield put(setLoadingPosts(false));
+};
 
-//  yield put(setLoadingPost(false))
-// }
- 
-// export default function* postsWather () {
-//  yield all ([takeLatest(getPosts,getPostsSaga)])
+function* getSelectedPostSaga(action: any) {
+    yield put(setSelectedPostLoading(true));
+    const { data, status, problem } = yield call(getPostAPI, action.payload);
 
-// }
+    if (status === 200 && data) {
+        yield put(setSelectedPost(data))
+    } else {
+        console.log('Eerror:', problem)
+    }
+
+    yield put(setSelectedPostLoading(false));
+};
+
+function* getTotalAllPostsCounterSaga(action: any) {
+    yield put(setTotalAllPostsCounterLoading(true));
+    const { data, status, problem } = yield call(getPostsCountAPI, action.payload);
+
+    if (status === 200 && data) {
+        yield put(setTotalAllPostsCounter(data))
+    } else {
+        console.log('Error:', problem)
+    }
+
+    yield put(setTotalAllPostsCounterLoading(false));
+};
+
+export default function* postsWatcher() {
+    yield all([
+        takeLatest(getPosts, getPostsSaga),
+        takeLatest(setSelectedPost, getSelectedPostSaga),
+        takeLatest(setTotalAllPostsCounter, getTotalAllPostsCounterSaga),
+    ]);
+};

@@ -1,33 +1,117 @@
- .login_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 624px;
-   height: 472px;
-    padding: 40px;
-    border-radius: 16px;
-    background-color: #FFFFFF
-
-
- }
- .sigIn_input {
-   width: 544px;
-   background: #FFFFFF;
-border: 1px solid rgba(49, 48, 55, 0.1);
-border-radius: 4px;
- }
- .signIn_button{
+ .login_wrapper {
+   background-color:  rgba(49, 48, 55, 0.1);
    display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 16px 32px;
+   flex-direction: column;
+   align-items: center;
+   gap: 72px;
 
+ }
+ .login_wrapper h1 {
+   font-family: 'Inter', sans-serif;
+   font-style: normal;
+   font-weight: 700;
+   font-size: 56px;
+   line-height: 80px;
+   color: #313037;
+   margin-right: 900px;
+ }
+ .login_container {
+   background: #FFFFFF;
+   border-radius: 16px;
+   padding: 40px;
+   margin-bottom: 152px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 624px;
+   height: 472px;
+ }
+ .login_container div {
+   font-family: 'Inter', sans-serif;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 20px;
+   color: #313037;
+   margin-bottom: 8px;
+   margin-right: 480px;
+   margin-top: 10px;
+  
+ }
+ .sigIn_email {
+   width: 544px;
+    height: 56px;
+    padding: 0 0 0 20px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(49, 48, 55, 0.1);
+    border-radius: 4px;
+ }
+ .sigIn_password {
+   width: 544px;
+   height: 56px;
+   padding: 0 0 0 20px;
 
-width: 544px;
-height: 56px;
-
-background: #6C1BDB;
-border-radius: 4px;
-color: #FFFFFF;
+   border: 1px solid rgba(49, 48, 55, 0.1);
+   border-radius: 4px;
+ }
+ .resset_div{
+   color: #313037;
+   font-family: 'Inter', sans-serif;
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 20px;
+   text-decoration: none;
+   padding-bottom: 42px;
+   padding-top: 16px;
+   margin-right: 430px;
+   -webkit-transition: all 1s ease;
+          transition: all 1s ease; 
+ }
+ .resset_div::after {
+   background-color:#8D8E97; /* Цвет линии при наведении на нее курсора мыши */
+   display: block;
+   content: "";
+   height: 2px; /* Высота линии */
+   width: 0%;
+   -webkit-transition: width .3s ease-in-out;
+   -moz--transition: width .3s ease-in-out;
+   transition: width .3s ease-in-out;
+ }
+ .resset_div:hover:after,
+ .resset_div:focus:after {
+   width: 100%
+ }
+ .login_container p {
+   font-family: 'Inter',sans-serif;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 20px;
+   color: #8D8E97;
+   padding-top: 24px;
+ }
+.register_div {
+   text-decoration: none;
+   font-family: 'Inter', sans-serif;
+   font-style: normal;
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 20px;
+   -webkit-transition: all 1s ease;
+          transition: all 1s ease; 
+}
+.register_div::after {
+   background-color: #8D8E97; /* Цвет линии при наведении на нее курсора мыши */
+   display: block;
+   content: "";
+   height: 2px; /* Высота линии */
+   width: 0%;
+   -webkit-transition: width .3s ease-in-out;
+   -moz--transition: width .3s ease-in-out;
+   transition: width .3s ease-in-out;
+ }
+ .register_div:hover:after,
+ .register_div:focus:after {
+   width:100%
  }

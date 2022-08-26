@@ -1,7 +1,7 @@
-import React, { ChangeEvent, FC, ForwardedRef } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import styles from './input.module.css';
+import cn from 'classnames';
 type inputProps = {
-  ref?: ForwardedRef<HTMLInputElement>;
   type: string;
   disabled?: boolean;
   value?: string;
@@ -11,17 +11,17 @@ type inputProps = {
 };
 
 const Input: FC<inputProps> = React.memo(
-  React.forwardRef((props, ref) => {
-    const { type, disabled, value, placeholder, onChange } = props;
+  React.forwardRef((props) => {
+    const { type, disabled, value, placeholder, onChange, className } = props;
 
     return (
       <input
-        ref={ref}
         type={type}
         disabled={disabled}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        className={cn(styles.input, className)}
       />
     );
   }),

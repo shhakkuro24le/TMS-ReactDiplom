@@ -1,31 +1,72 @@
-.register_container {
+.signUp_wrapper {
+    background-color:  rgba(49, 48, 55, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 624px;
-   height: 472px;
-    padding: 40px;
-    border-radius: 16px;
-    background-color: #FFFFFF
+    align-items: center;
+    gap: 72px;
 }
-.register_input {
-    width: 544px;
+.signUp_wrapper h1 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 80px;
+    color: #313037;
+    margin-right: 900px;
+  }
+.signUp_container {
     background: #FFFFFF;
- border: 1px solid rgba(49, 48, 55, 0.1);
- border-radius: 4px;
+   border-radius: 16px;
+   padding: 40px;
+   margin-bottom: 152px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 624px;
+   height: 472px;
+}
+.signUp_container div {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #313037;
+    margin-bottom: 8px;
+    margin-right: 480px;
+    margin-top: 10px;
+   
   }
-  .register_button{
-    display: flex;
- flex-direction: row;
- justify-content: center;
- align-items: center;
- padding: 16px 32px;
- 
- 
- width: 544px;
- height: 56px;
- 
- background: #6C1BDB;
- border-radius: 4px;
- color: #FFFFFF;
+  .sigUp_name {
+    width: 544px;
+    height: 56px;
+    padding: 0 0 0 20px;
+   
+    border: 1px solid rgba(49, 48, 55, 0.1);
+    border-radius: 4px;
   }
+  .sigUp_email{
+    width: 544px;
+    height: 56px;
+    padding: 0 0 0 20px;
+   
+    border: 1px solid rgba(49, 48, 55, 0.1);
+    border-radius: 4px;
+  }
+  .sigUp_password {
+    width: 544px;
+    height: 56px;
+    padding: 0 0 0 20px;
+   
+    border: 1px solid rgba(49, 48, 55, 0.1);
+    border-radius: 4px;
+  }
+  .sigUp_confirm_password {
+    width: 544px;
+    height: 56px;
+    padding: 0 0 0 20px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(49, 48, 55, 0.1);
+    border-radius: 4px;
+  }
+ 

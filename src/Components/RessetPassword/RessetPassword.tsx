@@ -1,50 +1,39 @@
 import { FC, useEffect, useRef, useState } from 'react';
+import cn from 'classnames';
+import styles from './RessetPassword.module.css';
 import Button from '../Button';
 import Input from '../Input';
 import { useInputValue } from '../../Utils/useInputValue';
+import { useLocation, useNavigate } from 'react-router-dom';
 const ResetPassword: FC = () => {
   const [email, emailHandler] = useInputValue();
   const [emailSentShown, setEmailSentShown] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  });
-
-  //   const focusHandler = () => {
-  //     inputRef.current.focus();
-  //   };
   const resetPasswordHandler = () => {
     setEmailSentShown(email);
     const resetPassData = {
       email,
     };
-    console.log('Reset password request was sent, with this data:', resetPassData);
+    navigate('/', { replace: true, state: location });
   };
 
   return (
-    <div>
-      <h2>resser password</h2>
+    <div className={cn(styles.resset_wrapper)}>
+      <h1>Reset password</h1>
+      <div className={cn(styles.resset_container)}>
+        <div>Email</div>
+        <Input
+          className={cn(styles.resset_email)}
+          type="text"
+          placeholder="Your email"
+          value={email}
+          onChange={emailHandler}
+        />
 
-      {emailSentShown && (
-        <div>
-          You will receive an email <span className="email">{emailSentShown}</span> with a link to
-          reset your password!
-        </div>
-      )}
-
-      <Input
-        ref={inputRef}
-        type="text"
-        placeholder="Your email"
-        value={email}
-        onChange={emailHandler}
-      />
-
-      <Button title="Reset" onClick={resetPasswordHandler} />
-      {/* <Button title="focus" onClick={focusHandler} /> */}
+        <Button title="Reset password" onClick={resetPasswordHandler} />
+      </div>
     </div>
   );
 };

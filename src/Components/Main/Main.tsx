@@ -1,6 +1,6 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Posts from '../../Pages/Posts';
+
+import Footer from '../Footer/Footer';
 import Header from '../Header';
 
 const Main = () => {
@@ -8,7 +8,7 @@ const Main = () => {
     <>
       <Header />
       <Outlet />
-      <footer>2022</footer>
+      <Footer />
     </>
   );
 };

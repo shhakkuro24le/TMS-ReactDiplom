@@ -1,0 +1,21 @@
+.categories ul {
+    display: flex;
+}
+.categories li {
+    list-style-type: none;
+    background-color: #f9f9f9;
+      padding: 13px 30px;
+      border-radius: 30px;
+      margin-right: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.1s ease-in-out;
+ 
+}
+.categories li:hover{
+    background-color:rgb(161, 133, 187)
+}
+.active {
+    color: blueviolet;
+    
+}

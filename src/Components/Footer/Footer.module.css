@@ -1,0 +1,28 @@
+.footer_container {
+    border-top: 1px solid rgba(49, 48, 55, 0.1);;
+    padding-top: 33px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(49, 48, 55, 0.1);
+    padding-bottom: 70px;
+}
+.footer_text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(49, 48, 55, 0.5);
+    padding-right: 100px;
+}
+.theme_block {
+    display: flex;
+    flex-direction: row;
+}
+.theme_text{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    padding-right: 15px;
+    color: rgba(49, 48, 55, 0.5);
+}
