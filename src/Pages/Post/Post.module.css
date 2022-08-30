@@ -1,6 +1,7 @@
 .post_container {
     background: #3130371a;
     padding: 72px 15%;
+    border-bottom: 1px solid rgba(49, 48, 55, 0.1);;
 }
 .post_navLink {
     display: flex;
@@ -54,6 +55,7 @@
     margin-bottom: 145px;
 }
 .another_posts {
+    padding-top: 72px;
     background: #3130371a;
     display: flex;
     flex-direction: row;

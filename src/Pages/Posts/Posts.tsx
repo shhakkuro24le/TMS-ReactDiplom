@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getPosts,
   PostsSelectors,
-  setSelectedPost,
+  setSinglePost,
   setTotalAllPostsCounter,
 } from '../../Redux/reducers/Post/posts.reducer';
 import { useParams } from 'react-router-dom';
@@ -18,8 +18,8 @@ import Sorting from '../../Components/Sorting';
 import Input from '../../Components/Input';
 
 const Posts: FC = () => {
-  const postsList = useSelector(PostsSelectors.getPosts);
-  const post = useSelector(PostsSelectors.getSelectedPost);
+  const allPosts = useSelector(PostsSelectors.getPosts);
+  const post = useSelector(PostsSelectors.getSinglePost);
   const isPostsLoading = useSelector(PostsSelectors.getPostsLoading);
   const totalCount = useSelector(PostsSelectors.getTotalAllPostsCounter);
 
@@ -37,7 +37,7 @@ const Posts: FC = () => {
   }, [_limit, page]);
 
   useEffect(() => {
-    dispatch(setSelectedPost(id));
+    dispatch(setSinglePost(id));
   }, []);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const Posts: FC = () => {
     dispatch(getPosts({ _limit, _start }));
   };
   const [valueSearch, setValueSearch] = useState('');
-  const searchPosts = postsList.filter((post) => {
+  const searchPosts = allPosts.filter((post) => {
     return post.title.toLowerCase().includes(valueSearch.toLowerCase());
   });
   const allPostsElements = useMemo(() => {

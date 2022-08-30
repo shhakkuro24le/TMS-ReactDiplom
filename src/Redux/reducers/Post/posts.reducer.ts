@@ -5,19 +5,19 @@ import { RootState } from './../../store';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type InitialStateType = {
-    postsList: any[];
+    allPosts: any[];
     isPostsLoading: boolean;
-    selectedPost: PostModel | null;
-    isSelectedPostLoading: boolean;
+    singlePost: PostModel | null;
+    isSinglePostLoading: boolean;
     totalAllPostsCounter: number;
     isTotalAllPostsCounterLoading: boolean;
 };
 
 const initialState: InitialStateType = {
-    postsList: [],
+    allPosts: [],
     isPostsLoading: false,
-    selectedPost: null,
-    isSelectedPostLoading: false,
+    singlePost: null,
+    isSinglePostLoading: false,
     totalAllPostsCounter: 0,
     isTotalAllPostsCounterLoading: false,
 };
@@ -31,13 +31,13 @@ const postsSlice = createSlice({
             state.isPostsLoading = action.payload;
         },
         setPosts: (state: any, action: PayloadAction<any[]>) => {
-            state.postsList = action.payload;
+            state.allPosts = action.payload;
         },
-        setSelectedPost: (state: any, action: any) => {
-            state.selectedPost = action.payload;
+        setSinglePost: (state: any, action: any) => {
+            state.singlePost = action.payload;
         },
-        setSelectedPostLoading: (state: any, action: PayloadAction<boolean>) => {
-            state.isSelectedPostLoading = action.payload;
+        setSinglePostLoading: (state: any, action: PayloadAction<boolean>) => {
+            state.isSinglePostLoading = action.payload;
         },
         setTotalAllPostsCounter: (state: any, action: any) => {
             state.totalAllPostsCounter = action.payload;
@@ -52,8 +52,8 @@ export const {
     getPosts, 
     setLoadingPosts, 
     setPosts, 
-    setSelectedPost, 
-    setSelectedPostLoading ,
+    setSinglePost, 
+    setSinglePostLoading ,
     setTotalAllPostsCounter,
     setTotalAllPostsCounterLoading,
 } = postsSlice.actions;
@@ -63,10 +63,10 @@ const reducer = postsSlice.reducer;
 export default reducer;
 
 export const PostsSelectors = {
-    getPosts: (state: RootState) => state.posts.postsList,
+    getPosts: (state: RootState) => state.posts.allPosts,
     getPostsLoading: (state: RootState) => state.posts.isPostsLoading,
-    getSelectedPost: (state: RootState) => state.posts.selectedPost,
-    getSelectedPostLoading: (state: RootState) => state.posts.isSelectedPostLoading,
+    getSinglePost: (state: RootState) => state.posts.singlePost,
+    getSinglePostLoading: (state: RootState) => state.posts.isSinglePostLoading,
     getTotalAllPostsCounter: (state: RootState) => state.posts.totalAllPostsCounter,
     getTotalAllPostsCounterLoading: (state: RootState) => state.posts.isTotalAllPostsCounterLoading,
 };

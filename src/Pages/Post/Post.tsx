@@ -5,14 +5,14 @@ import SohialButtons from '../Posts/SohialButtons';
 import styles from './Post.module.css';
 import cn from 'classnames';
 import { PostModel } from '../../types/post.model';
-import { getPosts, PostsSelectors, setSelectedPost } from '../../Redux/reducers/Post/posts.reducer';
+import { getPosts, PostsSelectors, setSinglePost } from '../../Redux/reducers/Post/posts.reducer';
 import PostCard from '../../Components/PostCard';
 
-const Post: FC = ({}) => {
+const Post: FC = () => {
   const dispatch = useDispatch();
-  const post = useSelector(PostsSelectors.getSelectedPost);
-  const isSelectedPostLoading = useSelector(PostsSelectors.getSelectedPostLoading);
-  const postsList = useSelector(PostsSelectors.getPosts);
+  const post = useSelector(PostsSelectors.getSinglePost);
+  const isSelectedPostLoading = useSelector(PostsSelectors.getSinglePostLoading);
+  const allPosts = useSelector(PostsSelectors.getPosts);
   const { postId } = useParams<{ postId: string }>();
 
   useEffect(() => {
@@ -27,14 +27,14 @@ const Post: FC = ({}) => {
 
   useEffect(() => {
     if (postId) {
-      dispatch(setSelectedPost(postId));
+      dispatch(setSinglePost(postId));
     }
     window.scrollTo(0, 0);
   }, [postId]);
 
   const anotherPosts = useMemo(() => {
-    return postsList?.slice(3, 6).map((post: PostModel) => <PostCard key={postId} post={post} />);
-  }, [postsList]);
+    return allPosts?.slice(3, 6).map((post: PostModel) => <PostCard key={postId} post={post} />);
+  }, [allPosts]);
 
   return (
     <>
@@ -48,7 +48,6 @@ const Post: FC = ({}) => {
         <h2 className={cn(styles.post_title)}>{post?.title}</h2>
         <img className={styles.post_img} src={post?.imageUrl} alt="post img"></img>
         <p className={cn(styles.post_summary)}>{post?.summary}</p>
-
         <SohialButtons />
       </div>
       <div className={cn(styles.another_posts)}>{anotherPosts}</div>

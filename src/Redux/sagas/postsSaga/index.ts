@@ -4,8 +4,8 @@ import { getPostsAPI, getPostAPI, getPostsCountAPI } from "../../api";
 import { getPosts,
             setPosts, 
             setLoadingPosts, 
-            setSelectedPost, 
-            setSelectedPostLoading, 
+            setSinglePost, 
+            setSinglePostLoading, 
             setTotalAllPostsCounter,
             setTotalAllPostsCounterLoading } from '../../reducers/Post/posts.reducer';
 
@@ -23,16 +23,16 @@ function* getPostsSaga(action: any) {
 };
 
 function* getSelectedPostSaga(action: any) {
-    yield put(setSelectedPostLoading(true));
+    yield put(setSinglePostLoading(true));
     const { data, status, problem } = yield call(getPostAPI, action.payload);
 
     if (status === 200 && data) {
-        yield put(setSelectedPost(data))
+        yield put(setSinglePost(data))
     } else {
         console.log('Eerror:', problem)
     }
 
-    yield put(setSelectedPostLoading(false));
+    yield put(setSinglePostLoading(false));
 };
 
 function* getTotalAllPostsCounterSaga(action: any) {
@@ -51,7 +51,7 @@ function* getTotalAllPostsCounterSaga(action: any) {
 export default function* postsWatcher() {
     yield all([
         takeLatest(getPosts, getPostsSaga),
-        takeLatest(setSelectedPost, getSelectedPostSaga),
+        takeLatest(setSinglePost, getSelectedPostSaga),
         takeLatest(setTotalAllPostsCounter, getTotalAllPostsCounterSaga),
     ]);
 };

@@ -31,7 +31,9 @@ const Pagination: FC<PaginationProps> = ({
           <div>Prev</div>
         </button>
         <div className={cn(styles.pagination_numbers)}>
-          <button className={cn(styles.pagination_num, { [styles._active_btn]: pageNum })} onClick={PageClick}>
+          <button
+            className={cn(styles.pagination_num, { [styles._active_btn]: pageNum })}
+            onClick={PageClick}>
             {pageNum}
           </button>
           <button className={cn(styles.pagination_num)} onClick={PageClick}>{`${

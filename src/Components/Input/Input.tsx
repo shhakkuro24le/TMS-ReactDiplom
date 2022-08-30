@@ -10,20 +10,16 @@ type inputProps = {
   className?: string;
 };
 
-const Input: FC<inputProps> = React.memo(
-  React.forwardRef((props) => {
-    const { type, disabled, value, placeholder, onChange, className } = props;
-
-    return (
-      <input
-        type={type}
-        disabled={disabled}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className={cn(styles.input, className)}
-      />
-    );
-  }),
-);
+const Input: FC<inputProps> = ({ type, disabled, value, placeholder, onChange, className }) => {
+  return (
+    <input
+      type={type}
+      disabled={disabled}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      className={cn(styles.input, className)}
+    />
+  );
+};
 export default Input;
