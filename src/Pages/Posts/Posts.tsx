@@ -16,16 +16,19 @@ import Pagination from '../../Components/Pagination';
 import Loader from '../../Components/Loader';
 import Sorting from '../../Components/Sorting';
 import Input from '../../Components/Input';
+import { selectFilter, setCategoryId } from '../../Redux/reducers/Filter/filter.reducer';
+import React from 'react';
 
 const Posts: FC = () => {
   const allPosts = useSelector(PostsSelectors.getPosts);
   const post = useSelector(PostsSelectors.getSinglePost);
   const isPostsLoading = useSelector(PostsSelectors.getPostsLoading);
   const totalCount = useSelector(PostsSelectors.getTotalAllPostsCounter);
+  const { categoryId } = useSelector(selectFilter);
 
   const [_limit, setLimit] = useState(12);
   const [page, setPage] = useState(1);
-
+  const [_sort, setSort] = useState(0);
   const pagesCount = Math.ceil(totalCount / _limit);
 
   const dispatch = useDispatch();
@@ -50,6 +53,15 @@ const Posts: FC = () => {
     const _start = (page - 1) * _limit;
     dispatch(getPosts({ _limit, _start }));
   };
+  const LastClick = () => setPage(pagesCount);
+  const onChangeCategory = React.useCallback((idx: number) => {
+    dispatch(setCategoryId(idx));
+  }, []);
+
+  useEffect(() => {
+    dispatch(getPosts({ _sort }));
+  }, [categoryId]);
+
   const [valueSearch, setValueSearch] = useState('');
   const searchPosts = allPosts.filter((post) => {
     return post.title.toLowerCase().includes(valueSearch.toLowerCase());
@@ -68,7 +80,7 @@ const Posts: FC = () => {
         <div className={cn(styles.posts_container)}>
           <h1 className={cn(styles.posts_title)}>Blog</h1>
           <div className={cn(styles.sort_container)}>
-            <Sorting value={undefined} onClickCategory={undefined} />
+            <Sorting value={categoryId} onChangeCategory={onChangeCategory} />
             <Input
               className={cn(styles.search_input)}
               type="search"
@@ -84,6 +96,7 @@ const Posts: FC = () => {
             PrevClick={PrevClick}
             NextClick={NextClick}
             PageClick={PageClick}
+            LastClick={LastClick}
           />
         </div>
       )}

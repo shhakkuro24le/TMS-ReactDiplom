@@ -21,6 +21,7 @@ const Header: FC = () => {
           <span>C</span>
           <span>O</span>
           <span>M</span>
+          <span>E</span>
           <span></span>
           <span>T</span>
           <span>O</span>

@@ -8,9 +8,18 @@ type inputProps = {
   placeholder?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Input: FC<inputProps> = ({ type, disabled, value, placeholder, onChange, className }) => {
+const Input: FC<inputProps> = ({
+  type,
+  disabled,
+  value,
+  placeholder,
+  onChange,
+  className,
+  onBlur,
+}) => {
   return (
     <input
       type={type}
@@ -18,6 +27,7 @@ const Input: FC<inputProps> = ({ type, disabled, value, placeholder, onChange, c
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      onBlur={onBlur}
       className={cn(styles.input, className)}
     />
   );

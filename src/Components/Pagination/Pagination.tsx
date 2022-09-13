@@ -9,7 +9,7 @@ type PaginationProps = {
   pagesCount: number;
   PrevClick: () => void;
   NextClick: () => void;
-
+  LastClick: () => void;
   PageClick: () => void;
 };
 
@@ -19,6 +19,7 @@ const Pagination: FC<PaginationProps> = ({
   PrevClick,
   NextClick,
   PageClick,
+  LastClick,
 }) => {
   return (
     <div className={cn(styles.pagination)}>
@@ -43,7 +44,9 @@ const Pagination: FC<PaginationProps> = ({
             pageNum + 2
           }`}</button>
 
-          <button className={cn(styles.pagination_num)}>...</button>
+          <button className={cn(styles.pagination_num)} onClick={LastClick}>
+            ...
+          </button>
           <button className={cn(styles.pagination_num)} onClick={PageClick}>
             {pagesCount}
           </button>

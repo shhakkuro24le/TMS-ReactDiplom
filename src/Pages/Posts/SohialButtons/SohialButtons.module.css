@@ -10,6 +10,9 @@ border: none;
 margin-right: 10px;
 
 }
+.social_buttons:hover {
+    border: 2px solid rebeccapurple;
+}
 .social_buttons img {
     padding: 16px 38px;
 }
@@ -34,4 +37,7 @@ margin-right: 10px;
       border-radius: 4px;
       align-items: center;
       text-decoration: none;
+}
+.social_buttons_link:hover {
+    border: 2px solid rebeccapurple;
 }

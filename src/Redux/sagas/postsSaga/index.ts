@@ -1,6 +1,6 @@
 
 import { all, takeLatest, put, call } from "redux-saga/effects";
-import { getPostsAPI, getPostAPI, getPostsCountAPI } from "../../api";
+import { getPostsAPI, getPostAPI, getPostsCountAPI} from "../../api";
 import { getPosts,
             setPosts, 
             setLoadingPosts, 
@@ -8,6 +8,7 @@ import { getPosts,
             setSinglePostLoading, 
             setTotalAllPostsCounter,
             setTotalAllPostsCounterLoading } from '../../reducers/Post/posts.reducer';
+
 
 function* getPostsSaga(action: any) {
     yield put(setLoadingPosts(true));

@@ -8,7 +8,7 @@ const Switch = () => {
   const { theme, onChangeTheme = () => {} } = useThemeContext();
 
   const onClickTheme = () => {
-    onChangeTheme(theme === 'light' ? Theme.Dark : Theme.Light);
+    onChangeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light);
   };
 
   const [isToggled, setIsToggled] = useState(false);

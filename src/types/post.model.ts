@@ -6,5 +6,5 @@ export type PostModel = {
   imageUrl: string,
   newsSite: string,
   summary: string,
-  publishedAt: string,
+  publishedAt: any,
 }
